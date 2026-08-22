@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-import { ShieldHalf, LayoutGrid, Map, Database, BrainCircuit, Info } from 'lucide-react'
+import { ShieldHalf, LayoutGrid, Map, Database, BrainCircuit, Info, X } from 'lucide-react'
 
 const NAV_ITEMS = [
   { to: '/', label: 'Home', icon: null, end: true },
@@ -21,15 +21,18 @@ function HomeIcon(props) {
   )
 }
 
-export default function Sidebar() {
+export default function Sidebar({ mobileOpen = false, onClose }) {
   return (
-    <aside className="sidebar">
+    <aside className={`sidebar${mobileOpen ? ' sidebar-open' : ''}`}>
       <div className="sidebar-brand">
         <ShieldHalf size={26} color="#3b9eff" strokeWidth={2} />
         <div className="brand-text">
           <span className="brand-title">DELHI SAFETY</span>
           <span className="brand-sub">RISK INTELLIGENCE</span>
         </div>
+        <button className="sidebar-close-btn" onClick={onClose} aria-label="Close navigation menu">
+          <X size={20} />
+        </button>
       </div>
 
       <nav className="sidebar-nav">
